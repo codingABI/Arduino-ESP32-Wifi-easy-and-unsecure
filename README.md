@@ -1,4 +1,4 @@
-# ESP32 Wifi Easy and unsafe?
+# ESP32 Wifi easy and unsafe?
 I have used Wifi on ESP32 microcontrollers in the past and liked how easy it is to use. But now I discovered that is seems to be risk for my Wifi because the Wifi credentials are stored in an unsecure way.
 
 To show you my concerns:
@@ -28,7 +28,7 @@ void setup() {
   if (WiFi.status() == WL_CONNECTED) {
     Serial.print("Successfully connected and ESP got IP ");
     Serial.println(WiFi.localIP());
-  } else Serial.print("Connection failed");
+  } else Serial.println("Connection failed");
 }
 
 void loop() {
@@ -67,9 +67,9 @@ void setup() {
     Serial.println(WiFi.SSID());
     Serial.print("PSK ");
     Serial.println(WiFi.psk());
-  } else Serial.print("Connection failed");
-
+  } else Serial.println("Connection failed");
 }
+
 void loop() {
 }
 ```
