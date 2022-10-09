@@ -63,11 +63,11 @@ void setup() {
   if (WiFi.status() == WL_CONNECTED) {
     Serial.print("Successfully connected and ESP got IP ");
     Serial.println(WiFi.localIP());
-    Serial.print("SSID ");
-    Serial.println(WiFi.SSID());
-    Serial.print("PSK ");
-    Serial.println(WiFi.psk());
   } else Serial.println("Connection failed");
+  Serial.print("SSID ");
+  Serial.println(WiFi.SSID());
+  Serial.print("PSK ");
+  Serial.println(WiFi.psk());
 }
 
 void loop() {
@@ -82,3 +82,16 @@ SSID mysid
 PSK mySecretPassword1#
 ```
 Isn't this crazy? It makes no difference whether I power off and on the ESP32 or push the Reset button. The Wifi Wifi key/password/psk seems to be stored on the ESP32 after the first sketch and can be read by every sketch runs on the same ESP32 => If somebody uploads a new sketch on my ESP32-devices he can read my Wifi credentials.
+## Workaround
+Clearing Wifi configuration after connection attempt like in this [sketch](src/WifiWithSecureCredentials.ino).
+
+```
+#include <esp_wifi.h>
+...
+wifi_config_t conf;
+memset(&conf, 0, sizeof(wifi_config_t));
+if(esp_wifi_set_config(WIFI_IF_STA, &conf)){
+  log_e("clear config failed!");
+}
+```
+I expect the functions like WiFi.reconnect() will not work after clearing the Wifi configuration.
