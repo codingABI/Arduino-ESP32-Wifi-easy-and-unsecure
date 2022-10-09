@@ -73,7 +73,7 @@ void setup() {
 void loop() {
 }
 ```
-After compiling and uploading the second sketch the serial output shows that Wifi is still working and I can read the Wifi key/password/psk in cleartext:
+After compiling and uploading the second sketch the serial output shows that Wifi is still working and I can read the Wifi key/password/psk in plain text:
 ```
 Connect without credentials
 .
