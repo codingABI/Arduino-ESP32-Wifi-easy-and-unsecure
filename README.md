@@ -94,4 +94,4 @@ if(esp_wifi_set_config(WIFI_IF_STA, &conf)){
   log_e("clear config failed!");
 }
 ```
-I expect the functions like WiFi.reconnect() will not work after clearing the Wifi configuration.
+I expect that functions like WiFi.reconnect() will not work after clearing the Wifi configuration.
