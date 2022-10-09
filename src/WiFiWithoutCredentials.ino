@@ -19,11 +19,11 @@ void setup() {
   if (WiFi.status() == WL_CONNECTED) {
     Serial.print("Successfully connected and ESP got IP ");
     Serial.println(WiFi.localIP());
-    Serial.print("SSID ");
-    Serial.println(WiFi.SSID());
-    Serial.print("PSK ");
-    Serial.println(WiFi.psk());
   } else Serial.println("Connection failed");
+  Serial.print("SSID ");
+  Serial.println(WiFi.SSID());
+  Serial.print("PSK ");
+  Serial.println(WiFi.psk());
 }
 
 void loop() {
