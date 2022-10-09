@@ -21,7 +21,7 @@ void setup() {
   if (WiFi.status() == WL_CONNECTED) {
     Serial.print("Successfully connected and ESP got IP ");
     Serial.println(WiFi.localIP());
-  } else Serial.print("Connection failed");
+  } else Serial.println("Connection failed");
 }
 
 void loop() {
