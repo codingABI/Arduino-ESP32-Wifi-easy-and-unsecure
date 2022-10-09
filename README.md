@@ -1,8 +1,9 @@
-# ESP32Wifi Easy and unsafe?
-I used Wifi on ESP32 microcontrollers in the past and liked how easy it is to use. But now I discovered that is seems to be risk because the Wifi credentials are stored in an unsecure way.
+# ESP32 Wifi Easy and unsafe?
+I have used Wifi on ESP32 microcontrollers in the past and liked how easy it is to use. But now I discovered that is seems to be risk for my Wifi because the Wifi credentials are stored in an unsecure way.
 
 To show you my concerns:
-This is a common Arduino Sketch to create a Wifi connection on an ESP32:
+
+This is a common [Arduino sketch](src/WiFiConnectNormal.ino) to use a Wifi connection on an ESP32:
 ```
 #include <WiFi.h>
 
@@ -39,7 +40,7 @@ Connect Wifi with credentials
 .
 Successfully connected and ESP got IP 192.168.170.26
 ```
-Now I overwrite the ESP32 with a complete another sketch, where I use no Wifi credentials:
+Now I overwrite the ESP32 with a complete another [sketch](src/WiFiNotNice.ino), which contains NO Wifi credentials:
 ```
 #include <WiFi.h>
 #define WIFIMAXRETRIES 30
@@ -72,12 +73,12 @@ void setup() {
 void loop() {
 }
 ```
-After starting the second sketch the serial output shows that Wifi is still working and I can read the Wifi key/password/psk in cleartext:
+After compiling and uploading the second sketch the serial output shows that Wifi is still working and I can read the Wifi key/password/psk in cleartext:
 ```
 Connect without credentials
-18:16:02.219 -> .
-18:16:02.219 -> Successfully connected and ESP got IP 192.168.170.26
-18:16:02.219 -> SSID mysid
-18:16:02.219 -> PSK mySecretPassword1#
+.
+Successfully connected and ESP got IP 192.168.170.26
+SSID mysid
+PSK mySecretPassword1#
 ```
-Isn't this crazy? It makes no difference whether I power off and on the ESP32 or push the Reset button. The Wifi Wifi key/password/psk seems to be stored on the ESP32 after the first connection and can be read by every sketch runs on the same ESP32.
+Isn't this crazy? It makes no difference whether I power off and on the ESP32 or push the Reset button. The Wifi Wifi key/password/psk seems to be stored on the ESP32 after the first sketch and can be read by every sketch runs on the same ESP32 => If somebody uploads a new sketch on my ESP32-devices he can read my Wifi credentials.
