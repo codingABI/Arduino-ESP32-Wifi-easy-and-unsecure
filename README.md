@@ -40,7 +40,7 @@ Connect Wifi with credentials
 .
 Successfully connected and ESP got IP 192.168.170.26
 ```
-Now I overwrite the ESP32 with a complete another [sketch](src/WiFiNoCredentials.ino), which contains NO Wifi credentials:
+Now I overwrite the ESP32 with a complete another [sketch](src/WiFiWithoutCredentials.ino), which contains NO Wifi credentials:
 ```
 #include <WiFi.h>
 #define WIFIMAXRETRIES 30
