@@ -1,5 +1,5 @@
 # ESP32 Wifi easy and unsafe?
-I have used Wifi on ESP32 microcontrollers in the past and liked how easy it is to use. But now I discovered that is seems to be risk for my Wifi because the Wifi credentials are stored in an unsecure way (testet in arduino-esp32 1.0.6 and 2.0.5).
+I have used Wifi on ESP32 microcontrollers in the past and liked how easy it is to use. But now I discovered that is seems to be a risk for my Wifi because the Wifi credentials are stored in an unsecure way (testet in arduino-esp32 1.0.6 and 2.0.5).
 
 To show you my concerns:
 
