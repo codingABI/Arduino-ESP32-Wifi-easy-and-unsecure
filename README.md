@@ -83,7 +83,7 @@ PSK mySecretPassword1#
 ```
 Isn't that crazy? It makes no difference whether I power off and on the ESP32 or push the Reset button. The Wifi Wifi key/password/psk seems to be stored on the ESP32 after the first sketch and can be read by every sketch runs on the same ESP32 => If somebody uploads a new sketch on my ESP32-devices he can read my Wifi credentials.
 ## Workaround
-Clearing Wifi configuration after connection attempt like in this [sketch](src/WifiWithSecureCredentials.ino).
+Clearing Wifi configuration after each connection like in this [sketch](src/WifiWithSecureCredentials.ino).
 
 ```
 #include <esp_wifi.h>
