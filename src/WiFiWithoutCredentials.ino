@@ -23,8 +23,8 @@ void setup() {
     Serial.println(WiFi.SSID());
     Serial.print("PSK ");
     Serial.println(WiFi.psk());
-  } else Serial.print("Connection failed");
-
+  } else Serial.println("Connection failed");
 }
+
 void loop() {
 }
