@@ -1,7 +1,7 @@
 # ESP32 Wifi easy and unsecure?
 I have used Wifi on ESP32 microcontrollers in the past and liked how easy it is to use. But now I discovered that is seems to be a risk for my Wifi because the Wifi credentials are stored in an unsecure way (testet in arduino-esp32 1.0.6 and 2.0.5).
 
-My concerns are: You can read out the Wifi credentials from an ESP32 with an sketch in plain text.
+My concerns are: You can read out the Wifi credentials from an ESP32 with an [sketch](src/WiFiWithoutCredentials.ino) in plain text.
 
 ## Easy
 This is a common [Arduino sketch](src/WiFiWithCredentials.ino) to use a Wifi connection on an ESP32:
@@ -86,8 +86,9 @@ PSK mySecretPassword1#
 Isn't that crazy? It makes no difference whether I power off and on the ESP32 or push the Reset button. The Wifi credentials seems to be stored on the ESP32 after the first [sketch](src/WiFiWithCredentials.ino) and can be read by every sketch runs on the same ESP32 => If somebody uploads a new sketch on my ESP32-devices he can read my Wifi credentials.
 ## My workaround
 I found two workarrounds that seems to clear the Wifi credentials
-- Wifi.disconnect(true,true); or Wifi.disconnect(false,true);
-- clearing Wifi configuration after each connection
+- `Wifi.disconnect(true,true);` or `Wifi.disconnect(false,true);`. Both commands also switch off wifi, which would be a problem for wifi driven projects
+- clearing Wifi configuration after each connection. This will NOT disconnect the running wifi connection. `WiFi.reconnect();` will not work after clearing the Wifi configuration.
+
 To clear the Wifi configuration after each connection you will need the esp_wifi_set_config command:
 
 ```
