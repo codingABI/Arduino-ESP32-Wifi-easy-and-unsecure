@@ -1,7 +1,7 @@
 # ESP32 Wifi easy and unsecure?
 I have used Wifi on ESP32 microcontrollers in the past and liked how easy it is to use. But now I discovered that is seems to be a risk for my Wifi because the Wifi credentials are stored in an unsecure way (testet in arduino-esp32 1.0.6 and 2.0.5).
 
-My concerns are: *You can read the previous used Wifi credentials from an ESP32 with a simple [sketch](src/WiFiWithoutCredentials.ino) in plain text.*
+My concerns are: *Everybody how can upload a [sketch](src/WiFiWithoutCredentials.ino to an ESP32 can read the previous used Wifi credentials in plain text.*
 
 Now I show you how to reproduce my concerns:
 
