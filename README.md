@@ -84,13 +84,19 @@ SSID mysid
 PSK mySecretPassword1#
 ```
 Isn't that crazy? It makes no difference whether I power off and on the ESP32 or push the Reset button. The Wifi credentials seems to be stored on the ESP32 after the first [sketch](src/WiFiWithCredentials.ino) and can be read by every sketch runs on the same ESP32 => If somebody uploads a new sketch on my ESP32-devices he can read my Wifi credentials.
-## My workaround
-I found two workarrounds that seems to clear the Wifi credentials
-- `Wifi.disconnect(true,true);` or `Wifi.disconnect(false,true);`. Both commands also switch off wifi, which would be a problem for wifi driven projects
-- clearing Wifi configuration after each connection. This will NOT disconnect the running wifi connection. `WiFi.reconnect();` will not work after clearing the Wifi configuration.
-
-To clear the Wifi configuration after each connection you will need the esp_wifi_set_config command:
-
+## My workarounds
+I found two workarounds that seems to clear the Wifi credentials
+- `WiFi.disconnect(true,true);` or `WiFi.disconnect(false,true);`
+- clearing Wifi configuration after each connection
+### Wifi.disconnect(true/false,true);
+`WiFi.disconnect(true,true);` or `WiFi.disconnect(false,true);` also switch off wifi, which would be a problem for wifi driven projects, but you can use these commands to reset your ESP32 before you give the microcontroller to another person.
+Code example (`WiFi.begin(` is needed to get WiFi.disconnect working):
+```
+WiFi.begin();
+WiFi.disconnect(true,true);
+```
+### clearing Wifi configuration after each connection
+This will NOT disconnect the running wifi connection(`WiFi.reconnect();` will not work after clearing the Wifi configuration). To clear the Wifi configuration after each connection you can use the esp_wifi_set_config command:
 ```
 #include <esp_wifi.h>
 ...
@@ -140,4 +146,3 @@ void setup() {
 void loop() {
 }
 ```
-I expect that functions like WiFi.reconnect() will not work after clearing the Wifi configuration.
