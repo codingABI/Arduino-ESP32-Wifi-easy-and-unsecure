@@ -1,4 +1,4 @@
-# ESP32 Wifi easy and unsafe?
+# ESP32 Wifi easy and unsecure?
 I have used Wifi on ESP32 microcontrollers in the past and liked how easy it is to use. But now I discovered that is seems to be a risk for my Wifi because the Wifi credentials are stored in an unsecure way (testet in arduino-esp32 1.0.6 and 2.0.5).
 
 To show you my concerns:
@@ -83,7 +83,7 @@ PSK mySecretPassword1#
 ```
 Isn't that crazy? It makes no difference whether I power off and on the ESP32 or push the Reset button. The Wifi credentials seems to be stored on the ESP32 after the first [sketch](src/WiFiWithCredentials.ino) and can be read by every sketch runs on the same ESP32 => If somebody uploads a new sketch on my ESP32-devices he can read my Wifi credentials.
 ## My workaround
-I am no ESP32-guru, but clearing Wifi configuration after each connection like in this [sketch](src/WifiWithSecureCredentials.ino) seems to solve the issue:
+I am no ESP32-guru, but clearing Wifi configuration after each connection 
 
 ```
 #include <esp_wifi.h>
@@ -92,6 +92,46 @@ wifi_config_t conf;
 memset(&conf, 0, sizeof(wifi_config_t));
 if(esp_wifi_set_config(WIFI_IF_STA, &conf)){
   log_e("clear config failed!");
+}
+```
+like in this [sketch](src/WifiWithSecureCredentials.ino) seems to solve the issue:
+```
+#include <WiFi.h>
+#include <esp_wifi.h>
+
+#define WIFIMAXRETRIES 30
+#define SSID "mysid"
+#define PASSWORD "mySecretPassword1"
+
+void setup() {
+  int wifiRetry = 0;
+
+  Serial.begin(115200);
+
+  Serial.println("Connect Wifi with credentials");
+  WiFi.begin(SSID,PASSWORD);
+
+  while ((WiFi.status() != WL_CONNECTED) && (wifiRetry <= WIFIMAXRETRIES)) {
+    wifiRetry++;
+    delay(500);
+    Serial.print(".");
+  }
+  Serial.println();
+  
+  // Clear Wifi credentials in ESP32 after connection
+  wifi_config_t conf;
+  memset(&conf, 0, sizeof(wifi_config_t));
+  if(esp_wifi_set_config(WIFI_IF_STA, &conf)){
+    log_e("clear config failed!");
+  }
+
+  if (WiFi.status() == WL_CONNECTED) {
+    Serial.print("Successfully connected and ESP got IP ");
+    Serial.println(WiFi.localIP());
+  } else Serial.println("Connection failed");
+}
+
+void loop() {
 }
 ```
 I expect that functions like WiFi.reconnect() will not work after clearing the Wifi configuration.
