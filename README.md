@@ -90,7 +90,8 @@ I found two workarounds that seems to clear the Wifi credentials
 - clearing Wifi configuration after each connection
 ### Wifi.disconnect(true/false,true);
 `WiFi.disconnect(true,true);` or `WiFi.disconnect(false,true);` also switch off wifi, which would be a problem for wifi driven projects, but you can use these commands to reset your ESP32 before you give the microcontroller to another person.
-Code example (`WiFi.begin(` is needed to get WiFi.disconnect working):
+
+Code example (`WiFi.begin(` is needed to get `WiFi.disconnect(` working):
 ```
 WiFi.begin();
 WiFi.disconnect(true,true);
