@@ -44,7 +44,7 @@ Connect Wifi with credentials
 Successfully connected and ESP got IP 192.168.170.26
 ```
 ## Unsecure
-Now I overwrite the ESP32 with a complete another [sketch](src/WiFiWithoutCredentials.ino), which contains NO Wifi credentials:
+Now I overwrite the ESP32 with a complete another [sketch](src/WiFiWithoutCredentials.ino), which contains **NO** Wifi credentials:
 ```
 #include <WiFi.h>
 #define WIFIMAXRETRIES 30
@@ -99,7 +99,7 @@ WiFi.begin();
 WiFi.disconnect(true,true);
 ```
 ### Clearing Wifi configuration after each connection
-This will NOT disconnect the running wifi connection(`WiFi.reconnect()` will not work after clearing the Wifi configuration). To clear the Wifi configuration after each connection you can use the `esp_wifi_set_config` command:
+This will not disconnect the running wifi connection, but `WiFi.reconnect()` will not work after clearing the Wifi configuration. To clear the Wifi configuration after each connection you can use the `esp_wifi_set_config` command:
 ```
 #include <esp_wifi.h>
 ...
