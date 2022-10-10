@@ -99,7 +99,9 @@ WiFi.begin();
 WiFi.disconnect(true,true);
 ```
 ### Clearing Wifi configuration after each connection
-This will not disconnect the running wifi connection, but `WiFi.reconnect()` will not work after clearing the Wifi configuration. To clear the Wifi configuration after each connection you can use the `esp_wifi_set_config` command:
+This will not disconnect the running wifi connection, but `WiFi.reconnect()` will not work after clearing the Wifi configuration. 
+
+To clear the Wifi configuration after each connection you can use the `esp_wifi_set_config` command:
 ```
 #include <esp_wifi.h>
 ...
@@ -109,7 +111,7 @@ if(esp_wifi_set_config(WIFI_IF_STA, &conf)){
   log_e("clear config failed!");
 }
 ```
-like in this [sketch](src/WifiWithSecureCredentials.ino) seems to solve the issue:
+like in this [sketch](src/WifiWithSecureCredentials.ino):
 ```
 #include <WiFi.h>
 #include <esp_wifi.h>
