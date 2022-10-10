@@ -1,12 +1,12 @@
 # ESP32 Wifi easy and unsecure?
 I have used Wifi on ESP32 microcontrollers in the past and liked how easy it is to use. But now I discovered that is seems to be a risk for my Wifi because the Wifi credentials are stored in an unsecure way (testet in arduino-esp32 1.0.6 and 2.0.5).
 
-My concerns are: You can read out the Wifi credentials from an ESP32 with a simple [sketch](src/WiFiWithoutCredentials.ino) in plain text.
+My concerns are: *You can read the previous used Wifi credentials from an ESP32 with a simple [sketch](src/WiFiWithoutCredentials.ino) in plain text.*
 
 Now I show you how to reproduce my concerns:
 
 ## Easy
-This is a common, easy [Arduino sketch](src/WiFiWithCredentials.ino) to use a Wifi connection on an ESP32:
+This is a common, easy [Arduino sketch](src/WiFiWithCredentials.ino) to use a Wifi connection on an ESP32. 
 ```
 #include <WiFi.h>
 
@@ -37,7 +37,7 @@ void setup() {
 void loop() {
 }
 ```
-After compiling und uploading this sketch to the ESP32 the serial output shows that Wifi is working fine:
+I think many people use Wifi on ESP32 in this or a similar way. After compiling und uploading this sketch to the ESP32 the serial output shows that Wifi is working fine:
 ```
 Connect Wifi with credentials
 .
@@ -85,7 +85,7 @@ Successfully connected and ESP got IP 192.168.170.26
 SSID mysid
 PSK mySecretPassword1#
 ```
-Isn't that crazy? It makes no difference whether I power off and on the ESP32 or push the Reset button. The Wifi credentials seems to be stored on the ESP32 after the first [sketch](src/WiFiWithCredentials.ino) and can be read by every sketch runs on the same ESP32 => If somebody uploads a new sketch on my ESP32-devices he can read my Wifi credentials.
+Isn't that crazy? It makes no difference whether I power off and on the ESP32 or push the reset button. The Wifi credentials seems to be stored on the ESP32 after the first [sketch](src/WiFiWithCredentials.ino) and can be read by every sketch runs on the same ESP32 => If somebody uploads a new sketch on my ESP32-devices he can read my Wifi credentials.
 ## My workarounds
 I found two workarounds that seems to clear the Wifi credentials
 1) `WiFi.disconnect(true,true)` or `WiFi.disconnect(false,true)`
@@ -93,7 +93,7 @@ I found two workarounds that seems to clear the Wifi credentials
 ### Wifi.disconnect(true/false,true)
 `WiFi.disconnect(true,true)` or `WiFi.disconnect(false,true)` also switch off wifi, which would be a problem for wifi driven projects, but you can use these commands to reset your ESP32 before you give the microcontroller to another person.
 
-Code example (`WiFi.begin(` is needed to get `WiFi.disconnect(` working):
+Code example (`WiFi.begin` is needed to get `WiFi.disconnect` working):
 ```
 WiFi.begin();
 WiFi.disconnect(true,true);
