@@ -6,7 +6,7 @@ My concerns are: *Everybody how can upload a [sketch](src/WiFiWithoutCredentials
 Now I show you how to reproduce my concerns:
 
 ## Easy
-This is a common, easy [Arduino sketch](src/WiFiWithCredentials.ino) to use a Wifi connection on an ESP32. 
+This is a common, easy [Arduino sketch](src/WiFiWithCredentials.ino) to use a Wifi connection on an ESP32:
 ```
 #include <WiFi.h>
 
