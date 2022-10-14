@@ -103,7 +103,7 @@ WiFi.begin();
 WiFi.disconnect(true,true);
 ```
 ### Clearing Wifi configuration after each connection
-This will not disconnect the running wifi connection, but `WiFi.reconnect()` will not work after clearing the Wifi configuration. 
+This will not disconnect the running wifi connection (`WiFi.reconnect()` will not work after clearing the Wifi configuration, but this should be no big problem by writing an "own" function to reconnect) 
 
 To clear the Wifi configuration after each connection within a sketch you can use the `esp_wifi_set_config` command:
 ```
