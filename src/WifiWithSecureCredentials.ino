@@ -2,7 +2,7 @@
 #include <esp_wifi.h>
 
 #define WIFIMAXRETRIES 30
-#define SSID "mysid"
+#define SSID "myssid"
 #define PASSWORD "mySecretPassword1"
 
 void setup() {
