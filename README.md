@@ -11,7 +11,7 @@ This is a common, easy [Arduino sketch](src/WiFiWithCredentials.ino) to use a Wi
 #include <WiFi.h>
 
 #define WIFIMAXRETRIES 30
-#define SSID "mysid"
+#define SSID "myssid"
 #define PASSWORD "mySecretPassword1"
 
 void setup() {
@@ -82,7 +82,7 @@ After compiling and uploading the second sketch the serial output shows that **W
 Connect without credentials
 .
 Successfully connected and ESP got IP 192.168.170.26
-SSID mysid
+SSID myssid
 PSK mySecretPassword1
 ```
 Isn't that crazy? It makes no difference whether I power off and on the ESP32 or push the reset button. The Wifi credentials seems to be stored on the ESP32 after the first [sketch](src/WiFiWithCredentials.ino) and can be read by every sketch runs on the same ESP32 => If somebody uploads a new sketch on my ESP32-devices he can read my Wifi credentials.
@@ -121,7 +121,7 @@ like in this [sketch](src/WifiWithSecureCredentials.ino):
 #include <esp_wifi.h>
 
 #define WIFIMAXRETRIES 30
-#define SSID "mysid"
+#define SSID "myssid"
 #define PASSWORD "mySecretPassword1"
 
 void setup() {
