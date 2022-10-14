@@ -92,7 +92,7 @@ I found three workarounds that seems to clear the Wifi credentials
 2) `WiFi.disconnect(true,true)` or `WiFi.disconnect(false,true)`
 3) Clearing Wifi configuration after each connection (currently my favourite)
 ### Erase All Flash Before Sketch Upload: "Enabled"
-This is only a workaround when I am uploading a sketch, but this can be used to reset your ESP32 before ou give the microcontroller to another person.
+This is only a workaround when I am uploading a sketch, but this can be used to reset your ESP32 before you give the microcontroller to another person.
 ![EraseAllFlash](/assets/images/EraseAllFlash.png) 
 ### Wifi.disconnect(true/false,true)
 `WiFi.disconnect(true,true)` or `WiFi.disconnect(false,true)` also switch off wifi, which would be a problem for wifi driven projects, but you can use these commands to reset your ESP32 before you give the microcontroller to another person.
