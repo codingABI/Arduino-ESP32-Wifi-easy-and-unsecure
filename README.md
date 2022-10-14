@@ -87,9 +87,13 @@ PSK mySecretPassword1#
 ```
 Isn't that crazy? It makes no difference whether I power off and on the ESP32 or push the reset button. The Wifi credentials seems to be stored on the ESP32 after the first [sketch](src/WiFiWithCredentials.ino) and can be read by every sketch runs on the same ESP32 => If somebody uploads a new sketch on my ESP32-devices he can read my Wifi credentials.
 ## My workarounds
-I found two workarounds that seems to clear the Wifi credentials
-1) `WiFi.disconnect(true,true)` or `WiFi.disconnect(false,true)`
-2) Clearing Wifi configuration after each connection
+I found three workarounds that seems to clear the Wifi credentials
+1) Erase All Flash Before Sketch Upload: "Enabled"
+2) `WiFi.disconnect(true,true)` or `WiFi.disconnect(false,true)`
+3) Clearing Wifi configuration after each connection (currently my favourite)
+### Erase All Flash Before Sketch Upload: "Enabled"
+This is only a workaround when I am uploading a sketch, but this can be used to reset your ESP32 before ou give the microcontroller to another person.
+![EraseAllFlash](/assets/images/EraseAllFlash.png) 
 ### Wifi.disconnect(true/false,true)
 `WiFi.disconnect(true,true)` or `WiFi.disconnect(false,true)` also switch off wifi, which would be a problem for wifi driven projects, but you can use these commands to reset your ESP32 before you give the microcontroller to another person.
 
