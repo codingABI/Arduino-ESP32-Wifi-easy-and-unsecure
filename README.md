@@ -1,7 +1,7 @@
 # ESP32 Wifi easy and unsecure?
 I have used Wifi on ESP32 microcontrollers in the past and liked how easy it is to use. But now I discovered that is seems to be a risk for my Wifi because the Wifi credentials are stored in an unsecure way (testet in arduino-esp32 1.0.6 and 2.0.5).
 
-My concerns are: *Everybody how can upload a [sketch](src/WiFiWithoutCredentials.ino) to an ESP32 can read the previous used Wifi credentials in plain text.*
+My concerns are: *Everybody how can upload a [sketch](src/WiFiWithoutCredentials.ino) to an ESP32 can read the previous used Wifi credentials in plain text.* 
 
 Now I show you how to reproduce my concerns:
 
@@ -85,7 +85,7 @@ Successfully connected and ESP got IP 192.168.170.26
 SSID myssid
 PSK mySecretPassword1
 ```
-Isn't that crazy? It makes no difference whether I power off and on the ESP32 or push the reset button. The Wifi credentials seems to be stored on the ESP32 after the first [sketch](src/WiFiWithCredentials.ino) and can be read by every sketch runs on the same ESP32 => If somebody uploads a new sketch on my ESP32-devices he can read my Wifi credentials.
+Isn't that crazy? It makes no difference whether I power off and on the ESP32 or push the reset button. The Wifi credentials seems to be stored on the ESP32 after the first [sketch](src/WiFiWithCredentials.ino) and can be read by every sketch runs on the same ESP32 => If somebody uploads a new sketch on my ESP32-devices he can read my Wifi credentials. I fear that most wifimanager-libraries (for example https://github.com/tzapu/WiFiManager) has by default the same issue.
 ## My workarounds
 I found three workarounds that seems to clear the Wifi credentials
 1) Arduino IDE-Option: Erase All Flash Before Sketch Upload: "Enabled"
