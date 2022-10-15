@@ -85,7 +85,7 @@ Successfully connected and ESP got IP 192.168.170.26
 SSID myssid
 PSK mySecretPassword1
 ```
-Isn't that crazy? It makes no difference whether I power off and on the ESP32 or push the reset button. The Wifi credentials seems to be stored on the ESP32 after the first [sketch](src/WiFiWithCredentials.ino) and can be read by every sketch runs on the same ESP32 => If somebody uploads a new sketch on my ESP32-devices he can read my Wifi credentials. I fear that most wifimanager-libraries (for example https://github.com/tzapu/WiFiManager) has by default the same issue.
+Isn't that crazy? It makes no difference whether I power off and on the ESP32 or push the reset button. The Wifi credentials seems to be stored on the ESP32 after the first [sketch](src/WiFiWithCredentials.ino) and can be read by every sketch runs on the same ESP32 => If somebody uploads a new sketch on my ESP32-devices he can read my Wifi credentials. I fear that most wifimanager-libraries (for example https://github.com/tzapu/WiFiManager at least in version <=2.0.14-beta) has by default the same issue.
 ## My workarounds
 I found three workarounds that seems to clear the Wifi credentials
 1) Arduino IDE-Option: Erase All Flash Before Sketch Upload: "Enabled"
