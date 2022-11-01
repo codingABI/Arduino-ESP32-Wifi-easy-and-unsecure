@@ -1,5 +1,4 @@
 #include <WiFi.h>
-#include <esp_wifi.h>
 
 #define WIFIMAXRETRIES 30
 #define SSID "myssid"
