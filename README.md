@@ -159,7 +159,7 @@ void setup() {
 void loop() {
 }
 ```
-### Nonpersistent credentials `WiFi.persistent(false)`
+### Nonpersistent credentials with WiFi.persistent(false)
 I got this hint from https://github.com/espressif/arduino-esp32/issues/7420 and this will not disconnect the running wifi connection and `WiFi.reconnect()` seems to work.
 
 Like in this [sketch](src/WifiWithNonPersistent.ino):
