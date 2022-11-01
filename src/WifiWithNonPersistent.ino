@@ -1,0 +1,31 @@
+#include <WiFi.h>
+#include <esp_wifi.h>
+
+#define WIFIMAXRETRIES 30
+#define SSID "myssid"
+#define PASSWORD "mySecretPassword1"
+
+void setup() {
+  int wifiRetry = 0;
+
+  Serial.begin(115200);
+
+  Serial.println("Connect Wifi with nonpersistent credentials");
+  WiFi.persistent(false); 
+  WiFi.begin(SSID,PASSWORD);
+
+  while ((WiFi.status() != WL_CONNECTED) && (wifiRetry <= WIFIMAXRETRIES)) {
+    wifiRetry++;
+    delay(500);
+    Serial.print(".");
+  }
+  Serial.println();
+  
+  if (WiFi.status() == WL_CONNECTED) {
+    Serial.print("Successfully connected and ESP got IP ");
+    Serial.println(WiFi.localIP());
+  } else Serial.println("Connection failed");
+}
+
+void loop() {
+}
