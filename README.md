@@ -95,10 +95,10 @@ I found four workarounds that seems to clear the Wifi credentials
 3) Clearing Wifi configuration after each connection
 4) Nonpersistent credentials `WiFi.persistent(false)` (currently my favourite)
 
-### Erase All Flash Before Sketch Upload: "Enabled"
+### 1. Erase All Flash Before Sketch Upload: "Enabled"
 This is only a workaround when I am uploading a sketch and not for a running sketch, but this can be used to reset your ESP32 before you give the microcontroller to another person.
 ![EraseAllFlash](/assets/images/EraseAllFlash.png) 
-### Wifi.disconnect(true/false,true)
+### 2. Wifi.disconnect(true/false,true)
 `WiFi.disconnect(true,true)` or `WiFi.disconnect(false,true)` also switch off wifi, which would be a problem for wifi driven projects, but you can use these commands to reset your ESP32 within a sketch before you give the microcontroller to another person.
 
 Code example (`WiFi.begin` is needed to get `WiFi.disconnect` working):
@@ -106,7 +106,7 @@ Code example (`WiFi.begin` is needed to get `WiFi.disconnect` working):
 WiFi.begin();
 WiFi.disconnect(true,true);
 ```
-### Clearing Wifi configuration after each connection
+### 3. Clearing Wifi configuration after each connection
 This will not disconnect the running wifi connection (`WiFi.reconnect()` will not work after clearing the Wifi configuration, but this should be no big problem by writing an own function to reconnect) 
 
 To clear the Wifi configuration after each connection within a sketch you can use the `esp_wifi_set_config` command:
@@ -159,7 +159,7 @@ void setup() {
 void loop() {
 }
 ```
-### Nonpersistent credentials with WiFi.persistent(false)
+### 4. Nonpersistent credentials with WiFi.persistent(false)
 I got this hint from https://github.com/espressif/arduino-esp32/issues/7420 and this will not disconnect the running wifi connection and `WiFi.reconnect()` seems to work.
 
 Like in this [sketch](src/WifiWithNonPersistent.ino):
