@@ -165,7 +165,6 @@ I got this hint from https://github.com/espressif/arduino-esp32/issues/7420 and 
 Like in this [sketch](src/WifiWithNonPersistent.ino):
 ```
 #include <WiFi.h>
-#include <esp_wifi.h>
 
 #define WIFIMAXRETRIES 30
 #define SSID "myssid"
