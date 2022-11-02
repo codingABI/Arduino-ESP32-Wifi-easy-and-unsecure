@@ -160,7 +160,7 @@ void loop() {
 }
 ```
 ### 4. Nonpersistent credentials with WiFi.persistent(false)
-I got this hint from https://github.com/espressif/arduino-esp32/issues/7420 and this will not disconnect the running wifi connection and `WiFi.reconnect()` seems to work. It will not delete previously (before `WiFi.persistent(false)` was used) stored Wifi credentials from ESP, but prevents the currently used Wifi credentials from beeing stored.
+I got this hint from https://github.com/espressif/arduino-esp32/issues/7420 and this will not disconnect the running wifi connection and `WiFi.reconnect()` seems to work. It will not delete previously (before `WiFi.persistent(false)` was used) stored Wifi credentials from ESP32, but prevents the currently used Wifi credentials from beeing stored.
 
 Like in this [sketch](src/WifiWithNonPersistent.ino):
 ```
