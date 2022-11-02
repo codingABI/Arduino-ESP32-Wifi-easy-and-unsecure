@@ -93,7 +93,7 @@ I found four workarounds that seems to clear the Wifi credentials
 1) [Arduino IDE-Option: Erase All Flash Before Sketch Upload: "Enabled"](#1-erase-all-flash-before-sketch-upload-enabled)
 2) [`WiFi.disconnect(true,true)` or `WiFi.disconnect(false,true)`](#2-wifidisconnecttruefalsetrue)
 3) [Clearing Wifi configuration after each connection](#3-clearing-wifi-configuration-after-each-connection)
-4) [Nonpersistent credentials `WiFi.persistent(false)` (currently my favourite)](#4-nonpersistent-credentials-with-wifipersistentfalse)
+4) [Nonpersistent credentials `WiFi.persistent(false)` *(currently my favourite)*](#4-nonpersistent-credentials-with-wifipersistentfalse)
 
 ### 1. Erase All Flash Before Sketch Upload: "Enabled"
 This is only a workaround when I am uploading a sketch and not for a running sketch, but this can be used to reset your ESP32 before you give the microcontroller to another person.
